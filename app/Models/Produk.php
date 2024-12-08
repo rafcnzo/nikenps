@@ -9,27 +9,19 @@ class Produk extends Model
 {
     use HasFactory;
 
-    // Nama tabel yang digunakan di database
-    protected $table = 'produk';
-
-    // Primary key tabel (jika berbeda dari 'id')
-    protected $primaryKey = 'no_produk';
-
-    // Tipe primary key (jika bukan incrementing integer)
+    protected $table = 'products';
+    protected $primaryKey = 'id_produk';
     public $incrementing = false;
-    protected $keyType = 'string';
+    protected $keyType = 'integer';
 
-    // Kolom yang dapat diisi secara massal
     protected $fillable = [
-        'no_produk',
+        'id_produk',
         'kode_kategori',
         'nama_produk',
         'gambar_produk',
         'stok',
-        'harga',
     ];
 
-    // Relasi dengan tabel kategori (optional)
     public function kategori()
     {
         return $this->belongsTo(Kategori::class, 'kode_kategori', 'kode_kategori');

@@ -25,10 +25,10 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            if ($user->status_pekerjaan === 'Superadmin') {
-                return redirect('/superadmin/dashboard');
+            if ($user->status_pekerjaan === 'Owner') {
+                return redirect('/Owner/dashboard');
             } elseif ($user->status_pekerjaan === 'Kasir') {
-                return redirect('/kasir/dashboard');
+                return redirect()->route('kasir.pos');
             }
         }
 
@@ -42,17 +42,17 @@ class AuthController extends Controller
             'username' => 'required|string',
             'password' => 'required|string|min:6',
         ]);
-    
+
         User::create([
             'email' => $request->email,
             'username' => $request->username,
             'password' => Hash::make($request->password),
             'status_pekerjaan' => 'Kasir', // Nilai default
         ]);
-    
+
         return redirect('/login')->with('success', 'Registration successful. Please login.');
     }
-    
+
 
     public function logout()
     {

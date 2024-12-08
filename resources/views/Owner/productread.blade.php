@@ -14,11 +14,11 @@
             <h2 class="text-2xl font-bold tracking-wide">NIKEN POWER STEERING</h2>
         </div>
         <nav class="mt-10 flex-grow">
-            <a href="/superadmin/dashboard" class="block py-2.5 px-6 hover:bg-indigo-700">Dashboard</a>
-            <a href="/superadmin/userread" class="block py-2.5 px-6 hover:bg-indigo-700">User</a>
-            <a href="#" class="block py-2.5 px-6 hover:bg-indigo-700">Product</a>
-            <a href="#" class="block py-2.5 px-6 hover:bg-indigo-700">Kategori</a>
-            <a href="#" class="block py-2.5 px-6 hover:bg-indigo-700">Transaksi</a>
+            <a href="/Owner/dashboard" class="block py-2.5 px-6 hover:bg-indigo-700">Dashboard</a>
+            <a href="/Owner/userread" class="block py-2.5 px-6 hover:bg-indigo-700">User</a>
+            <a href="/Owner/kategoriread" class="block py-2.5 px-6 hover:bg-indigo-700">Kategori</a>
+            <a href="/Owner/productread" class="block py-2.5 px-6 hover:bg-indigo-700">Product</a>
+            <a href="/Owner/transaksiread" class="block py-2.5 px-6 hover:bg-indigo-700">Transaksi</a>
         </nav>
     </aside>
 
@@ -52,11 +52,11 @@
             </div>
         </div>
         
-        <!-- Main Content -->
+        <!--  -->
         <div class="p-6">
             <div class="flex justify-between items-center mb-6 mt-8">
                 <h2 class="text-2xl font-bold text-gray-700">Manage Product</h2>
-                <a href="{{ route('product.create') }}" 
+                <a href="{{ route('productmenu.create') }}" 
                    class="bg-blue-500 hover:bg-blue-600 text-white text-sm px-4 py-2 rounded-lg shadow-md">
                     Add Product +
                 </a>
@@ -67,28 +67,47 @@
                 <table class="table-auto w-full border-collapse">
                     <thead class="bg-blue-500 text-white">
                         <tr>
-                            <th class="px-6 py-3 text-left text-sm font-semibold">No Produk</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold">Id Produk</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold">Kategori</th>
                             <th class="px-6 py-3 text-left text-sm font-semibold">Nama Produk</th>
+                            <th class="px-6 py-3 text-left text-sm font-semibold">Gambar</th>
                             <th class="px-6 py-3 text-left text-sm font-semibold">Stok</th>
-                            <th class="px-6 py-3 text-left text-sm font-semibold">Harga</th>
                             <th class="px-6 py-3 text-center text-sm font-semibold">Action</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
-                        @foreach($produk as $item)
+                        @foreach($products as $item)
                         <tr class="hover:bg-gray-100">
-                            <td class="px-6 py-4 text-sm text-gray-700 border-r border-gray-300">{{ $item->no_produk }}</td>
-                            <td class="px-6 py-4 text-sm text-gray-700 border-r border-gray-300">{{ $item->nama_produk }}</td>
-                            <td class="px-6 py-4 text-sm text-gray-700 border-r border-gray-300">{{ $item->stok }}</td>
-                            <td class="px-6 py-4 text-sm text-gray-700 border-r border-gray-300">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
+                            <td class="px-6 py-4 text-sm text-gray-700 border-r border-gray-300">
+                                {{ $item->kategori->kode_kategori ?? 'Kode Tidak Tersedia' }}-{{ $item->id_produk }}
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-700 border-r border-gray-300">
+                                {{ $item->kategori->nama_kategori ?? 'Kategori Tidak Tersedia' }}
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-700 border-r border-gray-300">
+                                {{ $item->nama_produk ?? 'Nama Tidak Tersedia' }}
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-700 border-r border-gray-300">
+                                @if ($item->gambar_produk)
+                                    <img src="{{ $item->gambar_produk }}" style="width: 50px; height: 50px; display: block; margin: 0 auto;">
+                                @else
+                                    <span class="text-muted">Tidak ada gambar</span>
+                                @endif
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-700 border-r border-gray-300">
+                                {{ $item->stok ?? 'Stok Tidak Tersedia' }}
+                            </td>
+                            
                             <td class="px-6 py-4 text-center">
                                 <!-- Edit Icon -->
-                                <a href="{{ route('product.edit', $item->no_produk) }}" 
-                                   class="text-blue-500 hover:text-blue-700 mx-2">
-                                   ✎
+                                <a href="{{ route('productmenu.edit', $item->id_produk) }}" class="text-blue-500 hover:text-blue-700 mx-2">
+                                    ✎
                                 </a>
+                                
+                                 
+                                 
                                 <!-- Delete Icon -->
-                                <form action="{{ route('product.delete', $item->no_produk) }}" 
+                                <form action="{{ route('productmenu.destroy', $item->id_produk) }}" 
                                       method="POST" class="inline-block">
                                     @csrf
                                     @method('DELETE')
@@ -102,14 +121,15 @@
                         @endforeach
                     </tbody>
                 </table>
+                
             
                 <!-- Pagination -->
                 <div class="flex justify-between items-center p-4 border-t border-gray-200">
                     <div class="text-sm text-gray-600">
-                        Showing {{ $produk->firstItem() }} to {{ $produk->lastItem() }} of {{ $produk->total() }} entries
+                        Showing {{ $products->firstItem() }} to {{ $products->lastItem() }} of {{ $products->total() }} entries
                     </div>
                     <div>
-                        {{ $produk->links('pagination::tailwind') }}
+                        {{ $products->links('pagination::tailwind') }}
                     </div>
                 </div>
             </div>
