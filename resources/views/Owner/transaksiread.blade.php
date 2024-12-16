@@ -17,8 +17,13 @@
         <nav class="mt-10 flex-grow">
             <a href="/Owner/dashboard" class="block py-2.5 px-6 hover:bg-indigo-700">Dashboard</a>
             <a href="/Owner/userread" class="block py-2.5 px-6 hover:bg-indigo-700">User</a>
+<<<<<<< HEAD
             <a href="/Owner/productread" class="block py-2.5 px-6 hover:bg-indigo-700">Product</a>
             <a href="/Owner/kategoriread" class="block py-2.5 px-6 hover:bg-indigo-700">Kategori</a>
+=======
+            <a href="/Owner/kategoriread" class="block py-2.5 px-6 hover:bg-indigo-700">Kategori</a>
+            <a href="/Owner/productread" class="block py-2.5 px-6 hover:bg-indigo-700">Product</a>
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
             <a href="/Owner/transaksiread" class="block py-2.5 px-6 hover:bg-indigo-700">Transaksi</a>
         </nav>
     </aside>
@@ -76,6 +81,10 @@
                             <th class="px-6 py-3 text-left text-sm font-semibold">ID Transaksi</th>
                             <th class="px-6 py-3 text-left text-sm font-semibold">Tanggal Transaksi</th>
                             <th class="px-6 py-3 text-left text-sm font-semibold">Nama Pelanggan</th>
+<<<<<<< HEAD
+=======
+                            <th class="px-6 py-3 text-left text-sm font-semibold">Plat Nomor</th>
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
                             <th class="px-6 py-3 text-left text-sm font-semibold">Total Harga</th>
                            
                         </tr>
@@ -91,6 +100,12 @@
                                 {{ $item->nama_pelanggan ?? 'Nama Tidak Tersedia' }}
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-700 border-r border-gray-300">
+<<<<<<< HEAD
+=======
+                                {{ $item->plat_nomor }}
+                            </td>
+                            <td class="px-6 py-4 text-sm text-gray-700 border-r border-gray-300">
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
                                 Rp {{ number_format($item->total_harga ?? 0, 0, ',', '.') }}
                             </td>
                             

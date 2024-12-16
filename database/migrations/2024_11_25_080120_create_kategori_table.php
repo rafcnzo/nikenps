@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('kategori', function (Blueprint $table) {
             $table->string('kode_kategori', 5)->primary();
             $table->string('nama_kategori', 20)->nullable();
+            $table->enum('jenis', ['servis', 'barang'])->default('barang');
             $table->timestamps();
         });
 

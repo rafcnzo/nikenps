@@ -13,7 +13,11 @@
     <!-- Navbar -->
     <nav class="bg-white shadow-lg py-4">
         <div class="container mx-auto flex justify-between items-center">
+<<<<<<< HEAD
             <a href="/" class="ml-5 text-2xl font-bold text-yellow-600">Bengkel Niken</a>
+=======
+            <a href="/" class="text-2xl font-bold text-yellow-600">Bengek Niken</a>
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
             <ul class="flex space-x-6 items-center">
                 <li><a href="#services" class="text-lg hover:text-yellow-600 transition">Services</a></li>
                 <li><a href="#about" class="text-lg hover:text-yellow-600 transition">About</a></li>
@@ -22,8 +26,17 @@
                 @if (Route::has('login'))
                     <li class="flex items-center space-x-4">
                         @auth
+<<<<<<< HEAD
                                 <a href="{{ url('/Owner/dashboard') }}" class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Home</a>
                          @else
+=======
+                            @if(auth()->user()->role == 'owner')
+                                <a href="{{ url('/Owner/dashboard') }}" class="text-lg font-semibold hover:text-yellow-600 transition">Home</a>
+                            @elseif(auth()->user()->role == 'kasir')
+                                <a href="{{ url('/Kasir/transaksi') }}" class="text-lg font-semibold hover:text-yellow-600 transition">Home</a>
+                            @endif
+                        @else
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
                             <a href="{{ route('login') }}" class="bg-yellow-600 text-white py-2 px-4 rounded-lg hover:bg-yellow-700 transition">Log in</a>
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}" class="bg-gray-800 text-white py-2 px-4 rounded-lg hover:bg-gray-900 transition ml-4">Register</a>
@@ -38,9 +51,16 @@
     <!-- Hero Section -->
     <header class="bg-yellow-600 text-white text-center py-24">
         <div class="container mx-auto px-4">
+<<<<<<< HEAD
             <h1 class="text-5xl font-extrabold mb-4">Welcome to Bengkel Niken Power Streeng</h1>
             <p class="text-xl mb-6">Expert Services for Power Steering Repairs</p>
             <a href="#services" class="bg-white text-yellow-600 py-3 px-6 rounded-lg text-lg font-semibold hover:bg-gray-100 transition">Learn More</a>
+=======
+            <h1 class="text-5xl font-extrabold mb-4">Welcome to Bengek Niken Power Streeng</h1>
+            <p class="text-xl mb-6">Expert Services for Power Steering Repairs</p>
+            <a href="#services" class="bg-white text-yellow-600 py-3 px-6 rounded-lg text-lg font-semibold hover:bg-gray-100 transition">Learn More</a>
+            <a href="{{ route('login') }}" class="bg-white text-yellow-600 py-3 px-6 rounded-lg text-lg font-semibold hover:bg-gray-100 transition ml-4">Log in</a>
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
         </div>
     </header>
 

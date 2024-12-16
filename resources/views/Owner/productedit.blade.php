@@ -15,8 +15,13 @@
         <nav class="mt-10 flex-grow">
             <a href="/Owner/dashboard" class="block py-2.5 px-6 hover:bg-indigo-700">Dashboard</a>
             <a href="/Owner/userread" class="block py-2.5 px-6 hover:bg-indigo-700">User</a>
+<<<<<<< HEAD
             <a href="/Owner/productread" class="block py-2.5 px-6 hover:bg-indigo-700">Product</a>
             <a href="/Owner/kategoriread" class="block py-2.5 px-6 hover:bg-indigo-700">Kategori</a>
+=======
+            <a href="/Owner/kategoriread" class="block py-2.5 px-6 hover:bg-indigo-700">Kategori</a>
+            <a href="/Owner/productread" class="block py-2.5 px-6 hover:bg-indigo-700">Product</a>
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
             <a href="/Owner/transaksiread" class="block py-2.5 px-6 hover:bg-indigo-700">Transaksi</a>
         </nav>
     </aside>
@@ -26,7 +31,11 @@
         <h1 class="text-2xl font-bold mb-6">Edit Produk</h1>
 
         <form 
+<<<<<<< HEAD
             action="{{ route('productmenu.update', $product->no_produk) }}" 
+=======
+            action="{{ route('productmenu.update', $product->id_produk) }}" 
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
             method="POST" 
             enctype="multipart/form-data" 
             class="bg-white p-6 rounded-lg shadow-md space-y-6"
@@ -36,12 +45,20 @@
 
             <!-- No Produk (Read-only) -->
             <div class="mb-4">
+<<<<<<< HEAD
                 <label for="no_produk" class="block text-sm font-medium text-gray-700">No Produk</label>
+=======
+                <label for="no_produk" class="block text-sm font-medium text-gray-700">Id Produk</label>
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
                 <input 
                     type="text" 
                     name="no_produk" 
                     id="no_produk" 
+<<<<<<< HEAD
                     value="{{ $product->no_produk }}" 
+=======
+                    value="{{ $product->id_produk }}" 
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
                     class="mt-1 block w-full py-2 px-4 border border-gray-300 rounded-lg shadow-sm bg-gray-100 focus:ring-indigo-500 focus:border-indigo-500" 
                     readonly
                 >
@@ -92,7 +109,11 @@
                 >
                 @if ($product->gambar_produk)
                     <img 
+<<<<<<< HEAD
                         src="{{ asset('storage/' . $product->gambar_produk) }}" 
+=======
+                        src="data:image/png;base64,{{ $product->gambar_produk }}" 
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
                         alt="Gambar Produk" 
                         class="mt-4 w-32 h-32 object-cover rounded-lg shadow-md"
                     >
@@ -112,6 +133,7 @@
                 >
             </div>
 
+<<<<<<< HEAD
             <!-- Harga -->
             <div class="mb-4">
                 <label for="harga" class="block text-sm font-medium text-gray-700">Harga</label>
@@ -125,6 +147,8 @@
                 >
             </div>
 
+=======
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
             <!-- Submit Button -->
             <button 
                 type="submit" 

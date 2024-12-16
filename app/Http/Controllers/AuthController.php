@@ -28,7 +28,11 @@ class AuthController extends Controller
             if ($user->status_pekerjaan === 'Owner') {
                 return redirect('/Owner/dashboard');
             } elseif ($user->status_pekerjaan === 'Kasir') {
+<<<<<<< HEAD
                 return redirect('/kasir/Transaksi');
+=======
+                return redirect()->route('kasir.pos');
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
             }
         }
 
@@ -42,17 +46,17 @@ class AuthController extends Controller
             'username' => 'required|string',
             'password' => 'required|string|min:6',
         ]);
-    
+
         User::create([
             'email' => $request->email,
             'username' => $request->username,
             'password' => Hash::make($request->password),
             'status_pekerjaan' => 'Kasir', // Nilai default
         ]);
-    
+
         return redirect('/login')->with('success', 'Registration successful. Please login.');
     }
-    
+
 
     public function logout()
     {

@@ -48,6 +48,7 @@ class KategoriController extends Controller
     // Update an existing category
     public function update(Request $request, $kode_kategori)
     {
+<<<<<<< HEAD
          // Validate the input data
             $validated = $request->validate([
                 'nama_kategori' => 'required|string|max:255',
@@ -58,6 +59,18 @@ class KategoriController extends Controller
             $category->update([
                 'nama_kategori' => $validated['nama_kategori'],
             ]);
+=======
+        // Validate the input data
+        $validated = $request->validate([
+            'nama_kategori' => 'required|string|max:255',
+        ]);
+
+        // Find the category and update it
+        $category = Kategori::findOrFail($kode_kategori);
+        $category->update([
+            'nama_kategori' => $validated['nama_kategori'],
+        ]);
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
 
         return redirect()->route('kategori.index')->with('success', 'Category updated successfully.');
     }
