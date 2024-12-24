@@ -38,12 +38,14 @@ class ProductMenuController extends Controller
             'nama_produk' => 'required|max:35',
             'gambar_produk' => 'required|image|mimes:jpeg,png,jpg,gif|max:5242880',  // Batas ukuran gambar 5MB
             'stok' => 'required|integer',
-            'harga' => 'required|numeric',
+            'harga' => 'required|numeric|min:0|max:10000000', // Menambahkan validasi untuk memastikan harga tidak negatif dan maksimal 10 juta
         ], [
             'no_produk.required' => 'Nomor produk wajib diisi.',
             'kode_kategori.exists' => 'Kategori tidak valid.',
             'gambar_produk.image' => 'File harus berupa gambar.',
             'gambar_produk.max' => 'Ukuran gambar maksimal 5MB.',  // Pesan kustom untuk gambar terlalu besar
+            'harga.min' => 'Harga tidak boleh negatif.', // Pesan kustom untuk harga negatif
+            'harga.max' => 'Harga tidak boleh lebih dari 10 juta.', // Pesan kustom untuk harga lebih dari 10 juta
         ]);
 
         // Menyimpan gambar ke folder public/images dan mendapatkan path gambar
@@ -80,7 +82,7 @@ class ProductMenuController extends Controller
         'nama_produk' => 'required|max:255',
         'kode_kategori' => 'required',
         'stok' => 'required|integer',
-        'harga' => 'required|numeric',
+        'harga' => 'required|numeric|min:0|max:10000000',
         'gambar_produk' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5242880', // Batas ukuran 5MB
     ]);
 

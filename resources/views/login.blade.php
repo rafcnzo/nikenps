@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
-    <div class="w-full max-w-md p-6 bg-white rounded-lg shadow-md">
+    <div class="w-full max-w-sm p-6 bg-white rounded-lg shadow-md sm:max-w-md md:max-w-lg lg:max-w-xl">
         <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Login</h2>
 
         <!-- Success Message -->
@@ -15,14 +15,12 @@
             <p class="text-green-600 text-center mb-4">{{ session('success') }}</p>
         @endif
 
-        <!-- Error Messages -->
-        @if ($errors->any())
-            <ul class="text-red-600 mb-4">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        @endif
+       <!-- Error Messages with Enhanced Styling -->
+       @if (session('error'))
+       <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 mb-4 rounded-lg shadow-md">
+           <strong class="font-semibold">Kesalahan:</strong> {{ session('error') }}
+       </div>
+       @endif
 
         <!-- Login Form -->
         <form method="POST" action="{{ route('login') }}" class="space-y-4">
@@ -62,11 +60,6 @@
                 Login
             </button>
         </form>
-
-        <p class="mt-6 text-center text-sm text-gray-500">
-            Don't have an account? 
-            <a href="/register" class="text-indigo-600 hover:underline">Register</a>
-        </p>
     </div>
 </body>
 </html>
