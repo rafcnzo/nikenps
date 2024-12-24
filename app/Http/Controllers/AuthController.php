@@ -23,6 +23,7 @@ class AuthController extends Controller
 {
     $credentials = $request->only('email', 'password');
 
+<<<<<<< HEAD
     // Attempt to log the user in
     if (Auth::attempt($credentials)) {
         $user = Auth::user();
@@ -30,6 +31,19 @@ class AuthController extends Controller
             return redirect('dashboard');
         } elseif ($user->status_pekerjaan === 'Kasir') {
             return redirect('/kasir/transaksi_read');
+=======
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+            if ($user->status_pekerjaan === 'Owner') {
+                return redirect('/Owner/dashboard');
+            } elseif ($user->status_pekerjaan === 'Kasir') {
+<<<<<<< HEAD
+                return redirect('/kasir/Transaksi');
+=======
+                return redirect()->route('kasir.pos');
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
+            }
+>>>>>>> a842d03ed64d55314ff9f1ed0e3236010b29e6a4
         }
     }
 

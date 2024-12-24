@@ -35,7 +35,10 @@ class TransaksiController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+<<<<<<< HEAD
             'id_transaksi' => 'required|string|unique:transaksi,id_transaksi',
+=======
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
             'tanggal_transaksi' => 'required|date',
             'nama_pelanggan' => 'required|string|max:15',
             'total_harga' => 'required|numeric',

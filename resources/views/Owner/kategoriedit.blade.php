@@ -16,8 +16,13 @@
         <nav class="mt-10 flex-grow">
             <a href="/dashboard" class="block py-2.5 px-6 hover:bg-indigo-700">Dashboard</a>
             <a href="/Owner/userread" class="block py-2.5 px-6 hover:bg-indigo-700">User</a>
+<<<<<<< HEAD
             <a href="/Owner/productread" class="block py-2.5 px-6 hover:bg-indigo-700">Product</a>
             <a href="/Owner/kategoriread" class="block py-2.5 px-6 hover:bg-indigo-700">Kategori</a>
+=======
+            <a href="/Owner/kategoriread" class="block py-2.5 px-6 hover:bg-indigo-700">Kategori</a>
+            <a href="/Owner/productread" class="block py-2.5 px-6 hover:bg-indigo-700">Product</a>
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
             <a href="/Owner/transaksiread" class="block py-2.5 px-6 hover:bg-indigo-700">Transaksi</a>
         </nav>
     </aside>
@@ -54,6 +59,22 @@
                         required>
                 </div>
 
+<<<<<<< HEAD
+=======
+                <div class="mb-4">
+                    <label for="jenis" class="block text-gray-700 font-bold mb-2">Jenis</label>
+                    <select 
+                        name="jenis" 
+                        id="jenis"
+                        value="{{ $category->jenis }}"
+                        class="w-full border border-gray-300 p-2 rounded-lg focus:ring focus:ring-indigo-200" 
+                        required>
+                        <option value="servis">Servis</option>
+                        <option value="barang">Barang</option>
+                    </select>
+                </div>
+
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
                 <button 
                     type="submit" 
                     class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700">

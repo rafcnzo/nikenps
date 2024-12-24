@@ -16,8 +16,13 @@
         <nav class="mt-10 flex-grow">
             <a href="/dashboard" class="block py-2.5 px-6 hover:bg-indigo-700">Dashboard</a>
             <a href="/Owner/userread" class="block py-2.5 px-6 hover:bg-indigo-700">User</a>
+<<<<<<< HEAD
             <a href="/Owner/productread" class="block py-2.5 px-6 hover:bg-indigo-700">Product</a>
             <a href="/Owner/kategoriread" class="block py-2.5 px-6 hover:bg-indigo-700">Kategori</a>
+=======
+            <a href="/Owner/kategoriread" class="block py-2.5 px-6 hover:bg-indigo-700">Kategori</a>
+            <a href="/Owner/productread" class="block py-2.5 px-6 hover:bg-indigo-700">Product</a>
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
             <a href="/Owner/transaksiread" class="block py-2.5 px-6 hover:bg-indigo-700">Transaksi</a>
         </nav>
     </aside>
@@ -72,19 +77,32 @@
                 <table class="table-auto w-full border-collapse">
                     <thead class="bg-blue-500 text-white">
                         <tr>
+<<<<<<< HEAD
                             <th class="px-6 py-3 text-left text-sm font-semibold">No Produk</th>
+=======
+                            <th class="px-6 py-3 text-left text-sm font-semibold">Id Produk</th>
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
                             <th class="px-6 py-3 text-left text-sm font-semibold">Kategori</th>
                             <th class="px-6 py-3 text-left text-sm font-semibold">Nama Produk</th>
                             <th class="px-6 py-3 text-left text-sm font-semibold">Gambar</th>
                             <th class="px-6 py-3 text-left text-sm font-semibold">Stok</th>
+<<<<<<< HEAD
                             <th class="px-6 py-3 text-left text-sm font-semibold">Harga</th>
+=======
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
                             <th class="px-6 py-3 text-center text-sm font-semibold">Action</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
                         @foreach($products as $item)
                         <tr class="hover:bg-gray-100">
+<<<<<<< HEAD
                             <td class="px-6 py-4 text-sm text-gray-700 border-r border-gray-300">{{ $item->no_produk }}</td>
+=======
+                            <td class="px-6 py-4 text-sm text-gray-700 border-r border-gray-300">
+                                {{ $item->kategori->kode_kategori ?? 'Kode Tidak Tersedia' }}-{{ $item->id_produk }}
+                            </td>
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
                             <td class="px-6 py-4 text-sm text-gray-700 border-r border-gray-300">
                                 {{ $item->kategori->nama_kategori ?? 'Kategori Tidak Tersedia' }}
                             </td>
@@ -93,11 +111,16 @@
                             </td>
                             <td class="px-6 py-4 text-sm text-gray-700 border-r border-gray-300">
                                 @if ($item->gambar_produk)
+<<<<<<< HEAD
                                     <img src="{{ asset('storage/' . $item->gambar_produk) }}" style="width: 50px; height: 50px; display: block; margin: 0 auto;">
+=======
+                                    <img src="{{ $item->gambar_produk }}" style="width: 50px; height: 50px; display: block; margin: 0 auto;">
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
                                 @else
                                     <span class="text-muted">Tidak ada gambar</span>
                                 @endif
                             </td>
+<<<<<<< HEAD
                             
                             <td class="px-6 py-4 text-sm text-gray-700 border-r border-gray-300">
                                 {{ $item->stok ?? 'Stok Tidak Tersedia' }}
@@ -109,13 +132,26 @@
                             <td class="px-6 py-4 text-center">
                                 <!-- Edit Icon -->
                                 <a href="{{ route('productmenu.edit', $item->no_produk) }}" class="text-blue-500 hover:text-blue-700 mx-2">
+=======
+                            <td class="px-6 py-4 text-sm text-gray-700 border-r border-gray-300">
+                                {{ $item->stok ?? 'Stok Tidak Tersedia' }}
+                            </td>
+                            
+                            <td class="px-6 py-4 text-center">
+                                <!-- Edit Icon -->
+                                <a href="{{ route('productmenu.edit', $item->id_produk) }}" class="text-blue-500 hover:text-blue-700 mx-2">
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
                                     ✎
                                 </a>
                                 
                                  
                                  
                                 <!-- Delete Icon -->
+<<<<<<< HEAD
                                 <form action="{{ route('productmenu.destroy', $item->no_produk) }}" 
+=======
+                                <form action="{{ route('productmenu.destroy', $item->id_produk) }}" 
+>>>>>>> 3ce2993d9aba089a8f551cc95207d9b01d54ed86
                                       method="POST" class="inline-block">
                                     @csrf
                                     @method('DELETE')
